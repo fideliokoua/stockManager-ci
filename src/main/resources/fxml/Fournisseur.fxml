@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="module-root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inphb.icgl.stocks.controller.FournisseurController">
+    <top>
+        <VBox spacing="8">
+            <Label styleClass="page-title" text="Gestion des Fournisseurs" />
+            <HBox spacing="10"><Label text="Recherche :" />
+                <TextField fx:id="txtRecherche" prefWidth="250" promptText="Nom ou téléphone…" />
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tableFournisseurs">
+            <columns>
+                <TableColumn fx:id="colNom" prefWidth="200" text="Nom" />
+                <TableColumn fx:id="colTel" prefWidth="130" text="Téléphone" />
+                <TableColumn fx:id="colMail" prefWidth="180" text="Email" />
+                <TableColumn fx:id="colVille" prefWidth="120" text="Ville" />
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <VBox spacing="8">
+            <HBox alignment="CENTER" spacing="8">
+                <Button fx:id="btnPrev" onAction="#handlePrev" text="◀" />
+                <Label fx:id="lblPage" />
+                <Button fx:id="btnNext" onAction="#handleNext" text="▶" />
+            </HBox>
+            <GridPane hgap="10" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT" minWidth="100" />
+                    <ColumnConstraints minWidth="200" />
+                    <ColumnConstraints halignment="RIGHT" minWidth="100" />
+                    <ColumnConstraints minWidth="200" />
+                </columnConstraints>
+                <Label text="Nom :" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="txtNom" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label text="Téléphone :" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <TextField fx:id="txtTel" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                <Label text="Email :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="Ville :" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <TextField fx:id="txtVille" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                <Label text="Adresse :" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="txtAdresse" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+            <HBox alignment="CENTER" spacing="10">
+                <Button onAction="#handleAjouter" styleClass="btn-primary" text="+ Ajouter" />
+                <Button onAction="#handleModifier" styleClass="btn-warning" text="✎ Modifier" />
+                <Button onAction="#handleSupprimer" styleClass="btn-danger" text="✕ Supprimer" />
+            </HBox>
+            <Label fx:id="lblStatut" styleClass="lbl-statut" />
+        </VBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.inphb.icgl.stocks.controller.DashboardController"
+      spacing="20" styleClass="dashboard-root">
+    <Label text="Tableau de bord" styleClass="page-title"/>
+    <!-- Indicateurs clés -->
+    <HBox spacing="20">
+        <VBox styleClass="kpi-card" prefWidth="200">
+            <Label text="Total produits" styleClass="kpi-label"/>
+            <Label fx:id="lblTotalProduits" text="0" styleClass="kpi-value"/>
+        </VBox>
+        <VBox styleClass="kpi-card kpi-alert" prefWidth="200">
+            <Label text="Produits en alerte" styleClass="kpi-label"/>
+            <Label fx:id="lblAlertes" text="0" styleClass="kpi-value"/>
+        </VBox>
+        <VBox styleClass="kpi-card" prefWidth="200">
+            <Label text="Mouvements du jour" styleClass="kpi-label"/>
+            <Label fx:id="lblMouvJour" text="0" styleClass="kpi-value"/>
+        </VBox>
+        <VBox styleClass="kpi-card" prefWidth="260">
+            <Label text="Valeur totale du stock" styleClass="kpi-label"/>
+            <Label fx:id="lblValeurStock" text="0 FCFA" styleClass="kpi-value-small"/>
+        </VBox>
+    </HBox>
+    <!-- Top 5 produits critiques -->
+    <Label text="5 produits les plus critiques (stock faible)" styleClass="section-title"/>
+    <TableView fx:id="tableCritiques" prefHeight="200">
+        <columns>
+            <TableColumn fx:id="colDesignation" text="Produit"        prefWidth="300"/>
+            <TableColumn fx:id="colQte"         text="Qté en stock"   prefWidth="120"/>
+            <TableColumn fx:id="colMin"         text="Stock minimum"  prefWidth="120"/>
+        </columns>
+        <placeholder><Label text="Aucun produit en alerte"/></placeholder>
+    </TableView>
+</VBox>

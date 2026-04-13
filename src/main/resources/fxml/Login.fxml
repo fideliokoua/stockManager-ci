@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.inphb.icgl.stocks.controller.LoginController"
+      alignment="CENTER" spacing="14"
+      styleClass="login-root" prefWidth="480" prefHeight="340">
+    <Label text="StockManager CI" styleClass="login-title"/>
+    <Label text="Quincaillerie KOFFI &amp; FRÈRES — Adjamé" styleClass="login-subtitle"/>
+    <GridPane hgap="10" vgap="10" alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints minWidth="120" halignment="RIGHT"/>
+            <ColumnConstraints minWidth="200"/>
+        </columnConstraints>
+        <Label text="Identifiant :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtLogin" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                   promptText="Votre login"/>
+        <Label text="Mot de passe :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="txtMotDePasse" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                       promptText="Mot de passe"
+                       onAction="#handleConnexion"/>
+    </GridPane>
+    <Label fx:id="lblErreur" styleClass="lbl-erreur" text=""/>
+    <HBox alignment="CENTER" spacing="12">
+        <Button fx:id="btnConnexion" text="Se connecter"
+                styleClass="btn-primary" onAction="#handleConnexion"
+                defaultButton="true"/>
+        <Button text="Quitter" onAction="#handleQuitter" styleClass="btn-secondary"/>
+    </HBox>
+</VBox>

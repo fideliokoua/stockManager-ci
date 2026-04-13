@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.inphb.icgl.stocks.controller.MainLayoutController">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="Accueil">
+                    <MenuItem text="Tableau de bord" onAction="#ouvrirDashboard"/>
+                </Menu>
+                <Menu text="Stock">
+                    <MenuItem text="Catégories"   onAction="#ouvrirCategories"/>
+                    <MenuItem text="Fournisseurs" onAction="#ouvrirFournisseurs"/>
+                    <MenuItem text="Produits"     onAction="#ouvrirProduits"/>
+                    <MenuItem text="Mouvements"   onAction="#ouvrirMouvements"/>
+                </Menu>
+                <Menu text="Administration">
+                    <MenuItem fx:id="menuUtilisateurs" text="Utilisateurs"
+                              onAction="#ouvrirUtilisateurs"/>
+                </Menu>
+                <Menu text="Compte">
+                    <MenuItem text="Déconnexion" onAction="#handleDeconnexion"/>
+                </Menu>
+            </MenuBar>
+            <!-- Barre de statut avec le nom de l'utilisateur -->
+            <HBox styleClass="top-bar" alignment="CENTER_RIGHT">
+                <Label text="Connecté : "/>
+                <Label fx:id="lblUtilisateur" styleClass="lbl-user"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area"/>
+    </center>
+</BorderPane>

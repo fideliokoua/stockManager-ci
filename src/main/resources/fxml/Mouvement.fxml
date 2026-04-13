@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.inphb.icgl.stocks.controller.MouvementController"
+            styleClass="module-root">
+    <top>
+        <VBox spacing="8">
+            <Label text="Mouvements de Stock" styleClass="page-title"/>
+            <!-- Zone de filtres -->
+            <TitledPane text="Filtres" expanded="true">
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Produit :"/>
+                        <ComboBox fx:id="cbFiltreProduit" prefWidth="240"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Date début :"/>
+                        <DatePicker fx:id="dpDateDebut" prefWidth="150"
+                                    promptText="jj/mm/aaaa"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Date fin :"/>
+                        <DatePicker fx:id="dpDateFin" prefWidth="150"
+                                    promptText="jj/mm/aaaa"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text=" "/>
+                        <Button text="Filtrer" styleClass="btn-primary"
+                                onAction="#handleFiltrer"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text=" "/>
+                        <Button text="Réinitialiser" styleClass="btn-secondary"
+                                onAction="#handleReinitialiserFiltres"/>
+                    </VBox>
+                </HBox>
+            </TitledPane>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tableMouvements" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colProduit" text="Produit"      prefWidth="220"/>
+                <TableColumn fx:id="colType"    text="Type"         prefWidth="80"/>
+                <TableColumn fx:id="colQte"     text="Quantité"     prefWidth="80"/>
+                <TableColumn fx:id="colMotif"   text="Motif"        prefWidth="200"/>
+                <TableColumn fx:id="colDate"    text="Date"         prefWidth="140"/>
+                <TableColumn fx:id="colUser"    text="Utilisateur"  prefWidth="150"/>
+            </columns>
+            <placeholder><Label text="Aucun mouvement trouvé"/></placeholder>
+        </TableView>
+    </center>
+    <bottom>
+        <VBox spacing="8">
+            <HBox spacing="8" alignment="CENTER">
+                <Button fx:id="btnPrev" text="◀ Précédent" onAction="#handlePrev"/>
+                <Label fx:id="lblPage" text="Page 1/1"/>
+                <Button fx:id="btnNext" text="Suivant ▶" onAction="#handleNext"/>
+            </HBox>
+            <TitledPane text="Enregistrer un mouvement" expanded="true">
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Produit :"/>
+                        <ComboBox fx:id="cbProduit" prefWidth="260"/>
+                        <Label fx:id="lblStockActuel" styleClass="lbl-info"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Type :"/>
+                        <ComboBox fx:id="cbType" prefWidth="120"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Quantité :"/>
+                        <TextField fx:id="txtQuantite" prefWidth="100" promptText="ex: 10"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Motif :"/>
+                        <TextField fx:id="txtMotif" prefWidth="250" promptText="Livraison, Vente…"/>
+                    </VBox>
+                    <Button text="Enregistrer" styleClass="btn-primary"
+                            onAction="#handleEnregistrer"/>
+                </HBox>
+            </TitledPane>
+            <Label fx:id="lblStatut" styleClass="lbl-statut"/>
+        </VBox>
+    </bottom>
+</BorderPane>

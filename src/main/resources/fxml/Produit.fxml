@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.inphb.icgl.stocks.controller.ProduitController"
+            styleClass="module-root">
+    <top>
+        <VBox spacing="8">
+            <Label text="Gestion des Produits" styleClass="page-title"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Recherche :"/>
+                <TextField fx:id="txtRecherche" promptText="Désignation, catégorie, fournisseur…"
+                           prefWidth="320"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tableProduits" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colRef"   text="Référence"   prefWidth="100"/>
+                <TableColumn fx:id="colDesig" text="Désignation" prefWidth="220"/>
+                <TableColumn fx:id="colCat"   text="Catégorie"   prefWidth="120"/>
+                <TableColumn fx:id="colFour"  text="Fournisseur" prefWidth="150"/>
+                <TableColumn fx:id="colPrix"  text="Prix FCFA"   prefWidth="90"/>
+                <TableColumn fx:id="colQte"   text="Quantité"    prefWidth="80"/>
+                <TableColumn fx:id="colMin"   text="Stock min"   prefWidth="80"/>
+                <TableColumn fx:id="colUnite" text="Unité"       prefWidth="70"/>
+            </columns>
+            <placeholder><Label text="Aucun produit"/></placeholder>
+        </TableView>
+    </center>
+    <bottom>
+        <VBox spacing="8">
+            <!-- Pagination -->
+            <HBox spacing="8" alignment="CENTER">
+                <Button fx:id="btnPrev" text="◀ Précédent" onAction="#handlePrev"/>
+                <Label fx:id="lblPage" text="Page 1/1"/>
+                <Button fx:id="btnNext" text="Suivant ▶" onAction="#handleNext"/>
+            </HBox>
+            <!-- Formulaire d'ajout/modification -->
+            <TitledPane text="Formulaire produit" expanded="true">
+                <GridPane hgap="10" vgap="8">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="120" halignment="RIGHT"/>
+                        <ColumnConstraints minWidth="180"/>
+                        <ColumnConstraints minWidth="120" halignment="RIGHT"/>
+                        <ColumnConstraints minWidth="180"/>
+                    </columnConstraints>
+                    <Label text="Référence :"  GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtRef"  GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="ex: CIM-CPI-425"/>
+                    <Label text="Prix FCFA :"  GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtPrix" GridPane.rowIndex="0" GridPane.columnIndex="3" promptText="4500"/>
+                    <Label text="Désignation :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtDesig" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Nom du produit"/>
+                    <Label text="Quantité :"   GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtQte"  GridPane.rowIndex="1" GridPane.columnIndex="3" promptText="0"/>
+                    <Label text="Catégorie :"  GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="cbCategorie" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="180"/>
+                    <Label text="Stock min :"  GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtMin"  GridPane.rowIndex="2" GridPane.columnIndex="3" promptText="5"/>
+                    <Label text="Fournisseur :" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="cbFournisseur" GridPane.rowIndex="3" GridPane.columnIndex="1" prefWidth="180"/>
+                    <Label text="Unité :"      GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtUnite" GridPane.rowIndex="3" GridPane.columnIndex="3" promptText="pièce / sac / kg…"/>
+                </GridPane>
+            </TitledPane>
+            <!-- Boutons d'action -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="+ Ajouter"   styleClass="btn-primary"  onAction="#handleAjouter"/>
+                <Button text="✎ Modifier"  styleClass="btn-warning"  onAction="#handleModifier"/>
+                <Button text="✕ Supprimer" styleClass="btn-danger"   onAction="#handleSupprimer"/>
+                <Button text="⬇ Excel"     styleClass="btn-export"   onAction="#handleExporterXLSX"/>
+                <Button text="⬇ PDF"       styleClass="btn-export"   onAction="#handleExporterPDF"/>
+            </HBox>
+            <Label fx:id="lblStatut" styleClass="lbl-statut"/>
+        </VBox>
+    </bottom>
+</BorderPane>

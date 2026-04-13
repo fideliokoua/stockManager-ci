@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.inphb.icgl.stocks.controller.CategorieController"
+            styleClass="module-root">
+    <top>
+        <VBox spacing="8">
+            <Label text="Gestion des Catégories" styleClass="page-title"/>
+            <HBox spacing="10"><Label text="Recherche :"/>
+                <TextField fx:id="txtRecherche" prefWidth="250" promptText="Libellé…"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tableCategories">
+            <columns>
+                <TableColumn fx:id="colId"          text="ID"          prefWidth="60"/>
+                <TableColumn fx:id="colLibelle"     text="Libellé"     prefWidth="200"/>
+                <TableColumn fx:id="colDescription" text="Description" prefWidth="400"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <VBox spacing="8">
+            <HBox spacing="8" alignment="CENTER">
+                <Button fx:id="btnPrev" text="◀" onAction="#handlePrev"/>
+                <Label fx:id="lblPage"/>
+                <Button fx:id="btnNext" text="▶" onAction="#handleNext"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Libellé :"/><TextField fx:id="txtLibelle" prefWidth="180"/>
+                <Label text="Description :"/><TextField fx:id="txtDescription" prefWidth="300"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="+ Ajouter"   styleClass="btn-primary" onAction="#handleAjouter"/>
+                <Button text="✎ Modifier"  styleClass="btn-warning" onAction="#handleModifier"/>
+                <Button text="✕ Supprimer" styleClass="btn-danger"  onAction="#handleSupprimer"/>
+            </HBox>
+            <Label fx:id="lblStatut" styleClass="lbl-statut"/>
+        </VBox>
+    </bottom>
+</BorderPane>

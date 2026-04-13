@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.inphb.icgl.stocks.controller.UtilisateurController"
+            styleClass="module-root">
+    <top><Label text="Gestion des Utilisateurs (ADMIN)" styleClass="page-title"/></top>
+    <center>
+        <TableView fx:id="tableUsers">
+            <columns>
+                <TableColumn fx:id="colId"    text="ID"     prefWidth="50"/>
+                <TableColumn fx:id="colNom"   text="Nom complet" prefWidth="200"/>
+                <TableColumn fx:id="colLogin" text="Login"  prefWidth="120"/>
+                <TableColumn fx:id="colRole"  text="Rôle"   prefWidth="130"/>
+                <TableColumn fx:id="colActif" text="Actif"  prefWidth="80"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <VBox spacing="8">
+            <HBox spacing="8" alignment="CENTER">
+                <Button fx:id="btnPrev" text="◀" onAction="#handlePrev"/>
+                <Label fx:id="lblPage"/>
+                <Button fx:id="btnNext" text="▶" onAction="#handleNext"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Nom complet :"/><TextField fx:id="txtNom" prefWidth="180"/>
+                <Label text="Login :"/><TextField fx:id="txtLogin" prefWidth="130"/>
+                <Label text="Mot de passe :"/><PasswordField fx:id="txtMdp" prefWidth="130"
+                                                             promptText="Laisser vide = inchangé"/>
+                <Label text="Rôle :"/><ComboBox fx:id="cbRole" prefWidth="150"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="+ Créer"         styleClass="btn-primary" onAction="#handleAjouter"/>
+                <Button text="✎ Modifier"      styleClass="btn-warning" onAction="#handleModifier"/>
+                <Button text="Activer/Désactiver" styleClass="btn-secondary" onAction="#handleToggleActif"/>
+            </HBox>
+            <Label fx:id="lblStatut" styleClass="lbl-statut"/>
+        </VBox>
+    </bottom>
+</BorderPane>
